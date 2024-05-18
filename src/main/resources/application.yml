@@ -1,2 +1,7 @@
 server:
   port: 8822
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
