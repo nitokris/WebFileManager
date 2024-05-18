@@ -32,12 +32,12 @@ public class FileService {
             log.error("{} not a directory", dir);
             throw new RuntimeException("无法枚举文件");
         }
-        Collection collection = FileUtils.listFiles(new File(dir), null, true);
+        Collection<File> collection = FileUtils.listFiles(new File(dir), null, true);
         List<FileItemInfo> fileItemInfos = new ArrayList<>();
-        for (Object object : collection) {
+        for (File object : collection) {
             FileItemInfo fileItemInfo = new FileItemInfo();
-            fileItemInfo.setKey(object.toString());
-            fileItemInfo.setLabel(new File(object.toString()).getName());
+            fileItemInfo.setKey(object.getAbsolutePath());
+            fileItemInfo.setLabel(object.getName());
             fileItemInfos.add(fileItemInfo);
         }
         return fileItemInfos;
