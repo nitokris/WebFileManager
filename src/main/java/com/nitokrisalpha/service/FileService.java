@@ -57,7 +57,7 @@ public class FileService {
         }
 
         for (FileItemInfo srcFile : sourceFiles) {
-            log.error("{} ==> 开始拷贝", srcFile.getKey());
+            log.error("{} ==> copy start", srcFile.getKey());
             File file = new File(srcFile.getKey());
             String fileParent = file.getParent();
             // 文件本体，直接拷贝
@@ -72,9 +72,10 @@ public class FileService {
                     tmpDir.mkdirs();
                 }
                 File distFile = new File(tmpTargetDir, srcFile.getLabel());
+                distFile.deleteOnExit();
                 FileUtils.copyFile(file, distFile);
             }
-            log.error("{} ==> 拷贝完成", srcFile.getKey());
+            log.error("{} ==> copy end", srcFile.getKey());
         }
     }
 
