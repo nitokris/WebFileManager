@@ -63,6 +63,7 @@ public class FileService {
             // 文件本体，直接拷贝
             if (fileParent.equals(sourceDir)) {
                 File distFile = new File(targetDir, file.getName());
+
                 FileUtils.copyFile(file, distFile);
             } else {
                 //目录下的文件，重建目录，再拷贝
@@ -77,6 +78,7 @@ public class FileService {
             }
             log.error("{} ==> copy end", srcFile.getKey());
         }
+        log.error("ALL FINISHED");
     }
 
     /**
