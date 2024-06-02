@@ -12,6 +12,6 @@ public class VersionLogger implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.warn(version);
+        log.info(version);
     }
 }
