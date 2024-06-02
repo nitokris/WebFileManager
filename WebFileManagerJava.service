@@ -1,0 +1,13 @@
+[Unit]
+Description=Nitokris Web File Manager
+After=network.target
+Requires=network.target
+
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /opt/ntool/web_file_manager/app.jar --spring.config.location=optional:file:/opt/ntool/web_file_manager/config.yml
+Restart=always
+
+
+[Install]

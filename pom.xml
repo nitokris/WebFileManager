@@ -53,8 +53,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>web_file_manager</finalName>
-                    <outputFile>web_file_manager</outputFile>
+                    <finalName>app</finalName>
+                    <outputFile>app</outputFile>
                 </configuration>
             </plugin>
         </plugins>
