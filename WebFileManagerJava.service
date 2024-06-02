@@ -11,3 +11,4 @@ Restart=always
 
 
 [Install]
+WantedBy=network.target

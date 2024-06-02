@@ -63,6 +63,10 @@ public class FileService {
             // 文件本体，直接拷贝
             if (fileParent.equals(sourceDir)) {
                 File distFile = new File(targetDir, file.getName());
+                if (distFile.exists()) {
+                    log.error("{} exists delete", file.getName());
+                    distFile.delete();
+                }
 
                 FileUtils.copyFile(file, distFile);
             } else {
@@ -73,7 +77,10 @@ public class FileService {
                     tmpDir.mkdirs();
                 }
                 File distFile = new File(tmpTargetDir, srcFile.getLabel());
-                distFile.deleteOnExit();
+                if (distFile.exists()) {
+                    log.error("{} exists delete", file.getName());
+                    distFile.delete();
+                }
                 FileUtils.copyFile(file, distFile);
             }
             log.error("{} ==> copy end", srcFile.getKey());
@@ -92,9 +99,10 @@ public class FileService {
 
         for (FileItemInfo srcFile : targetFiles) {
             if (!srcFile.getKey().startsWith(parent)) {
-                throw new RuntimeException("路径信息错误");
+                log.error(" error path info ");
+                continue;
             }
-            log.error("{} ==> 开始删除", srcFile.getKey());
+            log.error("{} ==> delete start", srcFile.getKey());
             File file = new File(srcFile.getKey());
             if (!file.exists()) {
                 log.error("{} ==> not exists", srcFile.getKey());
@@ -107,7 +115,7 @@ public class FileService {
                 File parentFile = file.getParentFile();
                 FileUtils.forceDelete(parentFile);
             }
-            log.error("{} ==> 删除完成", srcFile.getKey());
+            log.error("{} ==> delete down", srcFile.getKey());
         }
 
     }
