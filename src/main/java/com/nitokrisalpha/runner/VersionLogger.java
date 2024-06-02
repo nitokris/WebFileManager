@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class VersionLogger implements CommandLineRunner {
 
-    private static final String version = "1.11";
+    private static final String version = "1.12";
 
     @Override
     public void run(String... args) throws Exception {
