@@ -1,8 +1,9 @@
 package com.nitokrisalpha.controller;
 
 import com.nitokrisalpha.service.FileService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,8 @@ import java.util.List;
 @Slf4j
 public class FileController {
 
-    @Autowired
+    @Resource
+    @Qualifier("fileService")
     private FileService fileService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
