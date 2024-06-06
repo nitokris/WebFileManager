@@ -8,7 +8,7 @@ Requires=network.target
 Type=simple
 ExecStart=/usr/bin/java -jar /opt/ntool/web_file_manager/app.jar --spring.config.location=optional:file:/opt/ntool/web_file_manager/config.yml
 Restart=always
-
+WorkingDirectory=/opt/ntool/web_file_manager
 
 [Install]
 WantedBy=network.target

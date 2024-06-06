@@ -1,6 +1,7 @@
 package com.nitokrisalpha.service;
 
 import com.nitokrisalpha.controller.FileItemInfo;
+import com.nitokrisalpha.entity.TaskInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -36,7 +37,7 @@ public class DefaultFileService extends AbstractFileService implements FileServi
      * @param sourceFiles 源文件列表
      * @param targetDir   目标文件夹
      */
-    public void copyFile(String sourceDir, List<FileItemInfo> sourceFiles, String targetDir) throws IOException {
+    public TaskInfo copyFile(final String sourceDir, final List<FileItemInfo> sourceFiles, final String targetDir) throws IOException {
         if (StringUtils.isEmpty(sourceDir) || StringUtils.isEmpty(targetDir) || sourceFiles.isEmpty()) {
             throw new RuntimeException("部分信息为空");
         }
@@ -74,6 +75,7 @@ public class DefaultFileService extends AbstractFileService implements FileServi
             log.info("{} ==> copy end", srcFile.getKey());
         }
         log.info("ALL FINISHED");
+        return null;
     }
 
     /**
