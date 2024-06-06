@@ -58,7 +58,7 @@ public class FileServiceV2 extends AbstractFileService implements FileService {
                 if (fileParent.equals(sourceDir)) {
                     File distFile = new File(targetDir, file.getName());
                     if (distFile.exists()) {
-                        log.info("{} exists delete", file.getName());
+                        log.info("{} exists skip", file.getName());
                         continue;
                     }
                     org.apache.commons.io.FileUtils.copyFile(file, distFile);
@@ -71,7 +71,7 @@ public class FileServiceV2 extends AbstractFileService implements FileService {
                     }
                     File distFile = new File(tmpTargetDir, srcFile.getLabel());
                     if (distFile.exists()) {
-                        log.info("{} exists delete", file.getName());
+                        log.info("{} exists skip", file.getName());
                         continue;
                     }
                     org.apache.commons.io.FileUtils.copyFile(file, distFile);

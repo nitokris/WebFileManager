@@ -63,12 +63,13 @@ public class DefaultFileService extends AbstractFileService implements FileServi
                 String tmpTargetDir = fileParent.replaceAll(sourceDir, targetDir);
                 File tmpDir = new File(tmpTargetDir);
                 if (!tmpDir.exists()) {
-                    tmpDir.mkdirs();
+                    log.info("{} exists skip", file.getName());
+                    continue;
                 }
                 File distFile = new File(tmpTargetDir, srcFile.getLabel());
                 if (distFile.exists()) {
-                    log.info("{} exists delete", file.getName());
-                    distFile.delete();
+                    log.info("{} exists skip", file.getName());
+                    continue;
                 }
                 FileUtils.copyFile(file, distFile);
             }
